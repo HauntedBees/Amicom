@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Amicom 0.6</title>
+		<meta name="viewport" content="user-scalable=0"> 
+	</head>
+	<body>
+		<div id="topHUD" class="hud">
+			<span id="nameSpot" class="handed"></span>
+			<div id="infoMenu" class="handed">
+				<span id="menuBtn" class="btn"><i class="fa fa-bars"></i></span>
+				<span id="pauseBtn" class="btn" style="display: none"><i class="fa fa-pause-circle-o"></i></span>
+			</div>
+		</div>
+		<div id="nowLording">Now Loading...</div>
+		<div id="eggSelect" style="display: none">
+			<div id="eggText">Select an Egg</div>
+			<div id="egg1" class="pet egg" data-type="biped"></div>
+			<div id="egg2" class="pet egg" data-type="water"></div>
+			<div id="egg3" class="pet egg disabled"></div>
+			<div id="egg4" class="pet egg disabled"></div>
+			<div id="egg5" class="pet egg disabled"></div>
+			<div id="egg6" class="pet egg disabled"></div>
+			<div id="egg7" class="pet egg disabled"></div>
+			<div id="egg8" class="pet egg disabled"></div>
+		</div>
+		<div id="mainGame" class="scene" style="display: none">
+			<div id="content">
+				<div id="speechBubble"></div>
+				<div id="additionalBubbles"></div>
+				<div id="ailment" class="hungy s1" style="display: none"></div>
+				<div class="monsterDiv">
+					<div id="monster" class="pet">
+						<div id="eyes" class="feature"></div>
+						<div id="mouth" class="feature"></div>
+					</div>
+				</div>
+				<div id="bathtub" class="hideOnLoad s1"></div>
+				<div id="bathtoy" class="hideOnLoad s1 duck"></div>
+				<div id="food" class="sprite item"></div>
+				<div id="shit" class="sprite shit item s1"></div>
+			</div>
+			<div id="secondaryMenu"></div>
+			<div id="bottomMenu">
+				<div id="btnStat" class="circle"><i class="fa fa-question"></i></div>
+				<div id="btnFood" class="circle"><i class="fa fa-cutlery"></i></div>
+				<div id="btnBath" class="circle"><i class="fa fa-bath"></i></div>
+				<div id="btnGame" class="circle"><i class="fa fa-futbol-o"></i></div>
+			</div>
+		</div>
+		<div id="petInfo" style="display: none">
+			<div id="petInfoName">Chungo</div>
+			<div id="monsterInfoDisplay">
+				<div id="monsterInfoContainer">
+					<div id="monsterDisplayInfo" class="pet">
+						<div id="eyesInfo" class="feature"></div>
+						<div id="mouthInfo" class="feature"></div>
+					</div>
+				</div>
+				<div id="oceanInfo">
+					<canvas id="oceanPentagon" width="200" height="200"></canvas>
+				</div>
+			</div>
+			<div id="monsterInfo">
+				<div>Age: <span id="info_age"></span></div>
+				<div>Health: <span id="info_health"></span></div>
+				<div>Hunger: <span id="info_hunger"></span></div>
+				<div>Mood: <span id="info_mood"></span></div>
+				<div>Fitness: <span id="info_fitness"></span></div>
+				<div>Cleanliness: <span id="info_cleanliness"></span></div>
+			</div>
+		</div>
+		<div id="cupsGame" class="scene" style="display:none">
+			<div class="fullCover gameOverTap" style="display:none"></div>
+			<div id="cupsGameOver" class="fullCoverText gameOverTap" style="display:none">Game Over</div>
+			<div class="gameInfo">Wins: <span id="cupsScore">0</span></div>			
+			<div id="cupActions">
+				<div><button type="button" id="cupStart">Start</button></div>
+				<div><button type="button" class="quitGame">Quit</button></div>
+			</div>
+			<div class="monsterDiv">
+				<div id="cupMonster" class="pet">
+					<div id="cupEyes" class="feature"></div>
+					<div id="cupMouth" class="feature"></div>
+				</div>
+			</div>
+			<div id="topCups" class="cups">
+				<div id="cup0" class="sprite cup g_cups"></div>
+				<div id="cup1" class="sprite cup g_cups"></div>
+				<div id="cup2" class="sprite cup g_cups"></div>
+			</div>
+			<div id="bottomCups" class="cups">
+				<div id="item0" class="sprite cup g_cups"></div>
+				<div id="item1" class="sprite cup g_cups"></div>
+				<div id="item2" class="sprite cup g_cups"></div>
+			</div>
+		</div>
+		<div id="footGame" class="scene" style="display:none">
+			<div class="fullCover gameOverTap" style="display:none"></div>
+			<div id="footGameOver" class="fullCoverText gameOverTap" style="display:none">Game Over</div>
+			<div class="targetRow" id="tr0"></div>
+			<div class="targetRow" id="tr1"></div>
+			<div class="targetRow" id="tr2"></div>
+			<div class="targetRow" id="tr3"></div>
+			<div class="gameInfo">Timer: <span id="footTimer">1:00</span> Score: <span id="footScore">0</span> Balls: <span id="footBalls">20</span></div>
+			<div id="aimReticule" class="reticuleNormal"><div id="innerReticule"><div id="innerFill"></div></div></div>
+		</div>
+		<div id="caveGame" class="scene" style="display:none">
+			<div class="fullCover gameOverTap" style="display:none"></div>
+			<div id="caveGameOver" class="fullCoverText gameOverTap" style="display:none">Game Over</div>
+			<div id="caveMessage" class="fullCoverText" style="display:none"></div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="0" id="cave0_0" ></div><div class="caveCell sprite" data-x="1" data-y="0" id="cave1_0" ></div><div class="caveCell sprite" data-x="2" data-y="0" id="cave2_0" ></div><div class="caveCell sprite" data-x="3" data-y="0" id="cave3_0" ></div><div class="caveCell sprite" data-x="4" data-y="0" id="cave4_0" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="1" id="cave0_1" ></div><div class="caveCell sprite" data-x="1" data-y="1" id="cave1_1" ></div><div class="caveCell sprite" data-x="2" data-y="1" id="cave2_1" ></div><div class="caveCell sprite" data-x="3" data-y="1" id="cave3_1" ></div><div class="caveCell sprite" data-x="4" data-y="1" id="cave4_1" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="2" id="cave0_2" ></div><div class="caveCell sprite" data-x="1" data-y="2" id="cave1_2" ></div><div class="caveCell sprite" data-x="2" data-y="2" id="cave2_2" ></div><div class="caveCell sprite" data-x="3" data-y="2" id="cave3_2" ></div><div class="caveCell sprite" data-x="4" data-y="2" id="cave4_2" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="3" id="cave0_3" ></div><div class="caveCell sprite" data-x="1" data-y="3" id="cave1_3" ></div><div class="caveCell sprite" data-x="2" data-y="3" id="cave2_3" ></div><div class="caveCell sprite" data-x="3" data-y="3" id="cave3_3" ></div><div class="caveCell sprite" data-x="4" data-y="3" id="cave4_3" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="4" id="cave0_4" ></div><div class="caveCell sprite" data-x="1" data-y="4" id="cave1_4" ></div><div class="caveCell sprite" data-x="2" data-y="4" id="cave2_4" ></div><div class="caveCell sprite" data-x="3" data-y="4" id="cave3_4" ></div><div class="caveCell sprite" data-x="4" data-y="4" id="cave4_4" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="5" id="cave0_5" ></div><div class="caveCell sprite" data-x="1" data-y="5" id="cave1_5" ></div><div class="caveCell sprite" data-x="2" data-y="5" id="cave2_5" ></div><div class="caveCell sprite" data-x="3" data-y="5" id="cave3_5" ></div><div class="caveCell sprite" data-x="4" data-y="5" id="cave4_5" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="caveCell sprite" data-x="0" data-y="6" id="cave0_6" ></div><div class="caveCell sprite" data-x="1" data-y="6" id="cave1_6" ></div><div class="caveCell sprite" data-x="2" data-y="6" id="cave2_6" ></div><div class="caveCell sprite" data-x="3" data-y="6" id="cave3_6" ></div><div class="caveCell sprite" data-x="4" data-y="6" id="cave4_6" ></div>
+			</div>
+			<div class="gameInfo">Floor: <span id="caveFloor">1F</span> Health: <span id="caveHealth">3/3</span></div>
+			<div id="dpad" class="handed">
+				<div id="dpadtop">
+					<button id="d-up" type="button" data-y="-1"><i class="fa fa-arrow-up"></i></button>
+				</div>
+				<div id="dpadside">
+					<button id="d-left" type="button" data-x="-1"><i class="fa fa-arrow-left"></i></button>
+					<button id="d-right" type="button" data-x="1"><i class="fa fa-arrow-right"></i></button>
+				</div>
+				<div id="dpadbottom">
+					<button id="d-down" type="button" data-y="1"><i class="fa fa-arrow-down"></i></button>
+				</div>
+			</div>
+		</div>
+		<div id="cropGame" class="scene" style="display:none">
+			<div class="fullCover gameOverTap" style="display:none"></div>
+			<div id="cropGameOver" class="fullCoverText gameOverTap" style="display:none">Game Over</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="0" id="crop0_0" ></div><div class="sprite" data-x="1" data-y="0" id="crop1_0" ></div><div class="sprite" data-x="2" data-y="0" id="crop2_0" ></div><div class="sprite" data-x="3" data-y="0" id="crop3_0" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="1" id="crop0_1" ></div><div class="sprite" data-x="1" data-y="1" id="crop1_1" ></div><div class="sprite" data-x="2" data-y="1" id="crop2_1" ></div><div class="sprite" data-x="3" data-y="1" id="crop3_1" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="2" id="crop0_2" ></div><div class="sprite" data-x="1" data-y="2" id="crop1_2" ></div><div class="sprite" data-x="2" data-y="2" id="crop2_2" ></div><div class="sprite" data-x="3" data-y="2" id="crop3_2" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="3" id="crop0_3" ></div><div class="sprite" data-x="1" data-y="3" id="crop1_3" ></div><div class="sprite" data-x="2" data-y="3" id="crop2_3" ></div><div class="sprite" data-x="3" data-y="3" id="crop3_3" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="4" id="crop0_4" ></div><div class="sprite" data-x="1" data-y="4" id="crop1_4" ></div><div class="sprite" data-x="2" data-y="4" id="crop2_4" ></div><div class="sprite" data-x="3" data-y="4" id="crop3_4" ></div>
+			</div>
+			<div class="cropRow">
+				<div class="sprite" data-x="0" data-y="5" id="crop0_5" ></div><div class="sprite" data-x="1" data-y="5" id="crop1_5" ></div><div class="sprite" data-x="2" data-y="5" id="crop2_5" ></div><div class="sprite" data-x="3" data-y="5" id="crop3_5" ></div>
+			</div>
+			<div class="gameInfo">Timer: <span id="cropTimer">1:00</span> Score: <span id="cropScore">0</span></div>
+		</div>
+		<div id="pauseMenu" class="pauseMenu" style="display:none">
+			<div class="fullCover"></div>
+			<div class="fullCoverText">
+				<div>Paused</div>
+				<div><button type="button" class="startGame">Resume</button></div>
+				<div><button type="button" class="quitGame">Quit</button></div>
+			</div>
+		</div>
+		<div id="waterInstructions" class="instructions" style="display:none">
+			<div class="fullCover heavy"></div>
+			<div class="fullCoverText coverTop">Crop Collect</div>
+			<div class="fullCoverTextSmall">
+				<div class="inner_instructions">
+					<p><b>Crop Collect</b> is a matching game where you must grow and match crops to get points and also earn food. Higher scores will make your pet happier, and possibly more creative and confident. Additionally, by collecting carrots and strawberries, you will be able to feed your pet more healthy snacks!</p>
+					<p><b>How to Play</b></p>
+					<p>The game begins with a 4x6 grid of growing <b>crops</b>. Each <b>crop</b> has 2-4 stages of growth. Tapping on a <b>crop</b> will automatically mature that <b>crop</b> to its final stage of growth. Additionally, all of the <b>crops</b> above, below, and to the sides of the tapped <b>crop</b> will advance one growth stage if they haven't already reached their final stage. When two or more <b>crops</b> of the same type are next to each other and in their final growth stages, they will be collected and removed from the grid - giving the player points and additional time. All of the <b>crops</b> above them will fall down and take their place, and new <b>crops</b> will come in from the top to fill in the holes. When there are no more moves available or time runs out, the game is over.</p>
+					<p><b>Crops</b></p>
+					<table>
+						<tr>
+							<td class="firstCell"><div><b>Carrot</b></div><div class="sprite c_carrot_0"></div><div class="sprite c_carrot_1"></div></td>
+							<td><div>2 Stages - 75 Points</div><div>Provides <b>Carrot</b> Item</div></td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Tomato</b></div><div class="sprite c_eggplant_0"></div><div class="sprite c_eggplant_1"></div><div class="sprite c_eggplant_2"></div></td>
+							<td>3 Stages - 100 Points</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Cucumber</b></div><div class="sprite c_cucumber_0"></div><div class="sprite c_cucumber_1"></div><div class="sprite c_cucumber_2"></div></td>
+							<td>3 Stages - 100 Points</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Strawberry</b></div><div class="sprite c_strawberry_0"></div><div class="sprite c_strawberry_1"></div><div class="sprite c_strawberry_2"></div></td>
+							<td><div>3 Stages - 100 Points</div><div>Provides <b>Strawberry</b> Item</div></td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Corn</b></div><div class="sprite c_corn_0"></div><div class="sprite c_corn_1"></div><div class="sprite c_corn_2"></div><div class="sprite c_corn_3"></div></td>
+							<td>4 Stages - 150 Points</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Pumpkin</b></div><div class="sprite c_pumpkin_0"></div><div class="sprite c_pumpkin_1"></div><div class="sprite c_pumpkin_2"></div><div class="sprite c_pumpkin_3"></div></td>
+							<td><div>3 Stages - 2000 Points</div><div>Rots if it advances past its final stage. Tapping a rotten Pumpkin will remove it.</div></td>
+						</tr>
+					</table>
+					<p><b>Scoring</b></p>
+					<p>Collecting 2 of the same <b>crop</b> will get the number of points described above. For more than 2 per crop, a multiplier is applied. For example, 2 cucumbers will give you 100 points, 3 will give you 200 points, 4 will give you 800 points, and so on. Additionally, if after collecting crops, the crops that fell into their place also get collected, those crops will get a bonus as well.</p>
+				</div>
+				<div class="actions">
+					<div><button type="button" class="startGame">Tap here to Begin</button></div>
+					<div><button type="button" class="quitGame">Quit</button></div>
+				</div>
+			</div>
+		</div>
+		<div id="sportsInstructions" class="instructions" style="display:none">
+			<div class="fullCover heavy"></div>
+			<div class="fullCoverText coverTop">Foot Tennis</div>
+			<div class="fullCoverTextSmall">
+				<div class="inner_instructions">
+					<p><b>Foot Tennis</b> is an aiming game where you must hit targets! Doing well will make your pet happier, healthier, more outgoing, and more friendly!</p>
+					<p><b>How to Play</b></p>
+					<p>Press and hold on the circle at the bottom of the screen, then drag up and in the direction you want to kick the ball. Let go to throw the ball; the further you drag it from the original circle the farther it will go! Targets in the back are worth more points, as are golden targets, which also give you more balls!</p>
+				</div>
+				<div class="actions">
+					<div><button type="button" class="startGame">Tap here to Begin</button></div>
+					<div><button type="button" class="quitGame">Quit</button></div>
+				</div>
+			</div>
+		</div>
+		<div id="cupsInstructions" class="instructions" style="display:none">
+			<div class="fullCover heavy"></div>
+			<div class="fullCoverText coverTop">Sweet Cuppin'</div>
+			<div class="fullCoverTextSmall">
+				<div class="inner_instructions">
+					<p><b>Sweet Cuppin'</b> is an observation game where you must pick the right cup to win a prize! Winning can make your pet happier, more organized, and friendlier! You can also score candy and soda!</p>
+					<p><b>How to Play</b></p>
+					<p>Press the "Start" button and your pet will show you which cup has the prize under it. After that, they will shuffle the cups. After they are done shuffling, you must pick the cup which contains the prize!</p>
+				</div>
+				<div class="actions">
+					<div><button type="button" class="startGame">Tap here to Begin</button></div>
+					<div><button type="button" class="quitGame">Quit</button></div>
+				</div>
+			</div>
+		</div>
+		<div id="caveInstructions" class="instructions" style="display:none">
+			<div class="fullCover heavy"></div>
+			<div class="fullCoverText coverTop">Cave Explorer</div>
+			<div class="fullCoverTextSmall">
+				<div class="inner_instructions">
+					<p>In <b>Cave Explorer</b> you must guide your pet through a cave, trying to find the staircase to the next floor and get deeper and deeper in the cave. The deeper you get, the better the treasure! But also the more dangerous the obstacles! In addition to finding items like hamburgers and milk, your pet may become more confident and outgoing!</p>
+					<p><b>How to Play</b></p>
+					<p>Use the directional pad at the bottom of the screen to move your pet in one of four directions. With each step they take, more of the current floor will become visible. Tiles can have different things on them, and walking into or toward those tiles will begin an interaction with them. Some creatures will also follow your pet around and scare them. Once your pet gets too scared, they will leave the cave.</p>
+					<p><b>Tiles</b></p>
+					<table>
+						<tr>
+							<td class="firstCell"><div><b>Stairs</b></div><div class="sprite caveStairs"></div></td>
+							<td>Walking onto this tile will move your pet down to the next floor!</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Treasure</b></div><div class="sprite caveTreasure"></div></td>
+							<td>Treasure will contain things like food and other cool stuff! But watch out, some treasure chests may be traps!</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Friend</b></div><div class="sprite caveFriendR"></div></td>
+							<td>They are friendly and will talk to your pet.</td>
+						</tr>
+						<tr>
+							<td class="firstCell"><div><b>Spookers</b></div><div class="sprite caveGoast"></div><div class="sprite caveSkell"></div></td>
+							<td>These monsters will chase your pet around and scare them!</td>
+						</tr>
+					</table>
+				</div>
+				<div class="actions">
+					<div><button type="button" class="startGame">Tap here to Begin</button></div>
+					<div><button type="button" class="quitGame">Quit</button></div>
+				</div>
+			</div>
+		</div>
+		<div id="sideMenu" class="side handed">
+			<div class="side_close btn"><i class="fa fa-times"></i></div>
+			<div id="side_share" class="btn"><i class="fa fa-share"></i></div>
+			<div id="side_info" class="btn"><i class="fa fa-info"></i></div>
+			<div id="side_settings" class="btn"><i class="fa fa-cogs"></i></div>
+			<div id="side_geocache" class="btn"><i class="fa fa-globe"></i></div>
+			<div id="side_cloud" class="btn"><i class="fa fa-cloud-upload"></i></div>
+			<div id="side_contact" class="btn"><i class="fa fa-envelope"></i></div>
+			<div id="side_wipe" class="btn"><i class="fa fa-trash"></i></div>
+		</div>
+		<div id="sideMenuSettings" class="side handed">
+			<div class="side_close btn"><i class="fa fa-times"></i></div>
+			<div class="padAround heavyBottom">Settings</div>
+			<div class="menuSection">
+				<div>Left-Handed Mode</div>
+				<div><button id="optionLeft">Off</button></div>
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="petFull.min.js"></script>
+	</body>
+</html>

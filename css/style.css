@@ -1,0 +1,808 @@
+.ui-loader { display: none }
+body { overflow-x: hidden }
+
+#dpad { bottom: 0; position: absolute }
+#dpad > div { text-align: center }
+#dpad button { 
+	margin: 0;
+	opacity: 0.6;
+	z-index: 9999999;
+}
+#nowLording {
+  font-size: 128px;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 45%;
+}
+
+.caveCell:after {
+	content: " ";
+	height: 192px;
+	margin-left: -96px;
+	position: absolute;
+	width: 192px;
+}
+#cavePlayer { position: absolute; margin-left: -96px }
+#cavePlayer:not(:only-child) { margin-left: -192px }
+.caveSpooker:not(:only-child) { margin-left: -192px }
+.caveCell:not(:empty):after { margin-left: -192px }
+.caveCell.b0:after { background-color: #000000FC }
+.caveCell.b1:after { background-color: #00000066 }
+
+.cropRow > div {
+	height: 192px;
+	text-align: center;
+	width: 192px;
+}
+.sprite {
+	background: url("img/sheet.png");
+	display: inline-block;
+	height: 192px;
+	width: 192px;
+}
+
+.cups {
+    bottom: 20%;
+    left: 0;
+    position: absolute;
+    right: 192px;
+    text-align: center;
+	z-index: 500;
+}
+#topCups { z-index: 600 }
+.cup {
+	bottom: 0;
+	cursor: pointer;
+	position: absolute;
+}
+#cupActions {
+	background: #FFFFFFCC;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	z-index: 9999;
+}
+
+.egg { cursor: pointer; position: absolute }
+.egg.disabled { opacity: 0.5 }
+#eggText {
+	bottom: 0;
+	font-size: 72px;
+	font-weight: bold;
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	top: 47%;
+	width: 100%;
+}
+#egg8 { 
+	background-position: -2816px -512px;
+	bottom: 60%;
+	left: 0;
+	margin: auto;
+	right: 0;
+	top: 0;
+}
+#egg1 { 
+	background-position: -2304px 0;
+	bottom: 30%;
+	left: 40%;
+	margin: auto;
+	right: 0;
+	top: 0;
+}
+#egg2 {
+	background-position: -2560px 0;
+	bottom: 0;
+	left: 75%;
+	margin: auto;
+	right: 0;
+	top: 0;
+}
+#egg3 {
+	background-position: -2816px 0;
+	bottom: 0;
+	left: 40%;
+	margin: auto;
+	right: 0;
+	top: 30%;
+}
+#egg4 {
+	background-position: -2304px -256px;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	right: 0;
+	top: 60%;
+}
+#egg5 {
+	background-position: -2560px -256px;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	right: 40%;
+	top: 30%;
+}
+#egg6 {
+	background-position: -2816px -256px;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	right: 80%;
+	top: 0;
+}
+#egg7 {
+	background-position: -2560px -512px;
+	bottom: 30%;
+	left: 0;
+	margin: auto;
+	right: 40%;
+	top: 0;
+}
+
+.caveStairs { background-position: 0 -576px }
+.caveTreasure { background-position: -192px -576px }
+.caveTreasureOpen { background-position: -384px -576px }
+.caveTreasureF { background-position: -576px -576px }
+.caveTreasureFOpen { background-position: -768px -576px }
+.caveFriendR { background-position: -960px -576px }
+.caveFriendG { background-position: -1152px -576px }
+.caveFriendB { background-position: -1344px -576px }
+.caveGoast { background-position: -1536px -576px }
+.caveSkell { background-position: -1728px -576px }
+.caveWall { background-position: -2688px -576px }
+
+.cave_biped { background-position: -1920px -576px }
+.cave_bipedA { background-position: -2112px -576px }
+.cave_bipedB { background-position: -2304px -576px }
+.cave_bipedC { background-position: -2496px -576px }
+.cave_bipedAA { background-position: -2880px -576px }
+.cave_bipedAB { background-position: 0 -768px }
+.cave_bipedAC { background-position: -192px -768px }
+.cave_bipedAD { background-position: -384px -768px }
+.cave_bipedAE { background-position: -576px -768px }
+.cave_bipedAE { background-position: -576px -768px }
+.cave_bipedBA { background-position: -768px -768px }
+.cave_bipedBB { background-position: -960px -768px }
+.cave_bipedBC { background-position: -1152px -768px }
+.cave_bipedBD { background-position: -1344px -768px }
+.cave_bipedCA { background-position: -1536px -768px }
+.cave_bipedCB { background-position: -1728px -768px }
+
+.g_sports { background-position: -2112px -192px }
+.g_watering { background-position: -1920px -192px }
+.g_cups { background-position: -1920px -384px }
+.g_cave { background-position: -2112px -384px }
+
+.h_pill { background-position: -576px -384px }
+.h_bath { background-position: -768px -384px }
+.h_toilet { background-position: -960px -384px }
+
+.shit.s1 { background-position: -1152px -384px }
+.shit.s2 { background-position: -1344px -384px }
+
+.targetRow {
+	border-bottom: 5px solid black;
+	margin-bottom: 20px;
+	position: absolute;
+	width: 100%;
+}
+.targ { position: absolute; top: -27px }
+#tr0 { top: 15% }
+#tr1 { top: 30% }
+#tr2 { top: 45% }
+#tr3 { top: 60% }
+
+.pet {
+	background: url("img/friendsheet.png");
+	display: inline-block;
+	height: 256px;
+	width: 256px;
+	z-index: 200;
+}
+.pet.small { height: 128px; margin-top: 128px; width: 128px }
+
+.biped1 { background-position: 0 0 }
+.biped2 { background-position: -128px 0 }
+.bipedA1 { background-position: 0 -256px }
+.bipedA2 { background-position: -256px -256px }
+.bipedB1 { background-position: -512px -256px }
+.bipedB2 { background-position: -768px -256px }
+.bipedC1 { background-position: -1024px -256px }
+.bipedC2 { background-position: -1280px -256px }
+
+.bipedAA1 { background-position: 0 -512px }
+.bipedAA2 { background-position: -256px -512px }
+.bipedAB1 { background-position: -512px -512px }
+.bipedAB2 { background-position: -768px -512px }
+.bipedAC1 { background-position: -1024px -512px }
+.bipedAC2 { background-position: -1280px -512px }
+.bipedAD1 { background-position: -1536px -512px }
+.bipedAD2 { background-position: -1792px -512px }
+.bipedAE1 { background-position: -2048px -512px }
+.bipedAE2 { background-position: -2304px -512px }
+.bipedBA1 { background-position: 0 -768px }
+.bipedBA2 { background-position: -256px -768px }
+.bipedBB1 { background-position: -512px -768px }
+.bipedBB2 { background-position: -768px -768px }
+.bipedBC1 { background-position: -1024px -768px }
+.bipedBC2 { background-position: -1280px -768px }
+.bipedBD1 { background-position: -1536px -768px }
+.bipedBD2 { background-position: -1792px -768px }
+.bipedCA1 { background-position: -2048px -768px }
+.bipedCA2 { background-position: -2304px -768px }
+.bipedCB1 { background-position: -2560px -768px }
+.bipedCB2 { background-position: -2816px -768px }
+
+.water1 { background-position: -256px 0 }
+.water2 { background-position: -384px 0 }
+.waterA1 { background-position: 0 -1024px }
+.waterA2 { background-position: -256px -1024px }
+.waterB1 { background-position: 0 -1280px }
+.waterB2 { background-position: -256px -1280px }
+.waterC1 { background-position: 0 -128px }
+.waterC2 { background-position: -128px -128px }
+
+.feature {
+	background: url("img/featuresheet.png");
+	display: block;
+	height: 32px;
+	position: relative;
+	width: 64px;
+	z-index: 300;
+}
+.feature.narrow { width: 32px }
+.feature.wide { width: 96px }
+.feature.x-wide { width: 128px }
+.eyeA1 { background-position: 0 0 }
+.eyeA2 { background-position: -64px 0 }
+.eyeB1 { background-position: 0 -64px }
+.eyeB2 { background-position: -96px -64px }
+.eyeC1 { background-position: 0 -96px }
+.eyeC2 { background-position: -96px -96px }
+.eyeD1 { background-position: 0 -160px }
+.eyeD2 { background-position: -96px -160px }
+.eyeE1 { background-position: -192px 0 }
+.eyeE2 { background-position: -320px 0 }
+.eyeF1 { background-position: -256px -32px }
+.eyeF2 { background-position: -256px -32px }
+.eyeG1 { background-position: -192px -64px }
+.eyeG2 { background-position: -288px -96px }
+.eyeH1 { background-position: 0 -192px }
+.eyeH2 { background-position: 0 -224px }
+.eyeI1 { background-position: -192px -160px }
+.eyeI2 { background-position: -192px -192px }
+.eyeJ1 { background-position: -320px -160px }
+.eyeJ2 { background-position: -320px -192px }
+.eyeK1 { background-position: -128px -224px }
+.eyeK2 { background-position: -256px -224px }
+.eyeL1 { background-position: -416px -192px }
+.eyeL2 { background-position: -416px -224px }
+.eyeM1 { background-position: 0 -256px }
+.eyeM2 { background-position: -96px -256px }
+.eyeN1 { background-position: -384px -128px }
+.eyeN2 { background-position: -384px -224px }
+.eyeO1 { background-position: -96px -288px }
+.eyeO2 { background-position: -160px -288px }
+.mouthA1 { background-position: 0 -32px }
+.mouthA2 { background-position: -64px -32px }
+.mouthB1 { background-position: -128px -32px }
+.mouthB2 { background-position: -192px -32px }
+.mouthC1 { background-position: 0 -128px }
+.mouthC2 { background-position: -96px -128px }
+.mouthD1 { background-position: 0 -128px }
+.mouthD2 { background-position: -96px -128px }
+.mouthE1 { background-position: -416px -96px }
+.mouthE2 { background-position: -416px -128px }
+.mouthF1 { background-position: -384px -32px }
+.mouthF2 { background-position: -384px -63px }
+.mouthG1 { background-position: -192px -96px }
+.mouthG2 { background-position: -288px -128px }
+.mouthH1 { background-position: -448px 0 }
+.mouthH2 { background-position: -320px -64px }
+.mouthI1 { background-position: -192px -256px }
+.mouthI2 { background-position: -256px -256px }
+.mouthJ1 { background-position: -384px -256px }
+.mouthJ2 { background-position: -384px -288px }
+.mouthK1 { background-position: 0 -288px }
+.mouthK2 { background-position: -32px -288px }
+.mouthL1 { background-position: -224px -288px }
+.mouthL2 { background-position: -288px -288px }
+.mouthSadA { background-position: -128px 0 }
+.mouthSadB { background-position: -192px -128px }
+.mouthSadC { background-position: -192px -128px }
+.mouthSadD { background-position: -416px -160px }
+.mouthSadE { background-position: -384px -32px }
+.mouthSadF { background-position: -128px -192px }
+.mouthSadG { background-position: -320px -256px }
+.mouthSadH { background-position: -384px -320px }
+.mouthSadI { background-position: -64px -288px }
+.mouthSadJ { background-position: 0 -320px }
+
+.ball {
+	background-position: -384px -384px;
+	margin-left: -96px;
+	position: absolute;
+	z-index: 99999;
+}
+.target { background-position: -2496px -192px }
+.Gtarget { background-position: -2880px -192px }
+
+.frog { background-position: -2304px -384px }
+.boot { background-position: -2496px -384px }
+.coin { background-position: -2688px -384px }
+.sheb { background-position: -2880px -384px }
+
+.f_burgar { background-position: -2304px -192px }
+.f_carrot { background-position: -576px 0 }
+.f_cayundy { background-position: -2688px -192px }
+.f_gwapes { background-position: -1728px -192px }
+.f_malk { background-position: 0 -384px }
+.f_thoda { background-position: -192px -384px }
+
+.c_carrot_0 { background-position: -192px 0 }
+.c_carrot_1 { background-position: -384px 0 }
+.c_carrot { background-position: -576px 0 }
+
+.c_corn_0 { background-position: -768px 0 }
+.c_corn_1 { background-position: -960px 0 }
+.c_corn_2 { background-position: -1152px 0 }
+.c_corn_3 { background-position: -1344px 0 }
+.c_corn { background-position: -1536px 0 }
+
+.c_cucumber_0 { background-position: -1728px 0 }
+.c_cucumber_1 { background-position: -1920px 0 }
+.c_cucumber_2 { background-position: -2112px 0 }
+.c_cucumber { background-position: -2304px 0 }
+
+.c_eggplant_0 { background-position: -2496px 0 }
+.c_eggplant_1 { background-position: -2688px 0 }
+.c_eggplant_2 { background-position: -2880px 0 }
+.c_eggplant { background-position: 0 -192px }
+
+.c_pumpkin_0 { background-position: -192px -192px }
+.c_pumpkin_1 { background-position: -384px -192px }
+.c_pumpkin_2 { background-position: -576px -192px }
+.c_pumpkin_3 { background-position: -768px -192px }
+.c_pumpkin { background-position: -960px -192px }
+
+.c_strawberry_0 { background-position: -1152px -192px }
+.c_strawberry_1 { background-position: -1344px -192px }
+.c_strawberry_2 { background-position: -1536px -192px }
+.c_strawberry { background-position: -1728px -192px }
+
+#aimReticule {
+	background-repeat: no-repeat;
+	background-size: 50% 50%;
+	border: 5px solid #00000099;
+	border-radius: 200px;
+	bottom: 50px;
+	height: 400px;
+	left: 50%;
+	margin-left: -200px;
+	position: absolute;
+	width: 400px;
+	z-index: 900;
+}
+.reticuleNormal {
+	background: 
+		linear-gradient(36deg, #FFFFFFCC 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #CCCCCC 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #CCCCCC 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FFFFFFCC 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #CCCCCC 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #CCCCCC 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #BBBBDD 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #BBBBDD 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#CCCCFF linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+.reticuleCenter {
+	background: 
+		linear-gradient(36deg, #FFFFFFCC 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #CCCCCC 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #CCCCCC 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FFFFFFCC 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #CCCCCC 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #CCCCCC 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #BBBBDD 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #BBBBDD 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#FF0000 linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+.reticuleULeft {
+	background: 
+		linear-gradient(36deg, #FFFFFFCC 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #CCCCCC 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #CCCCCC 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FFFFFFCC 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #CCCCCC 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #CCCCCC 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #FF0000 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #BBBBDD 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#CCCCFF linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+.reticuleURight {
+	background: 
+		linear-gradient(36deg, #FFFFFFCC 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #CCCCCC 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #CCCCCC 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FFFFFFCC 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #CCCCCC 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #CCCCCC 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #BBBBDD 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #FF0000 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#CCCCFF linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+.reticuleLeft {
+	background: 
+		linear-gradient(36deg, #FF0000 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #FF0000 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #FF0000 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FFFFFFCC 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #CCCCCC 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #CCCCCC 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #BBBBDD 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #BBBBDD 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#CCCCFF linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+.reticuleRight {
+	background: 
+		linear-gradient(36deg, #FFFFFFCC 42.34%, transparent 42.34%) 0 0, /* Left A */
+		linear-gradient(-36deg, transparent 57.66%, #CCCCCC 57.66%) 0 100%, /* Left B */
+		linear-gradient(-72deg, transparent 24.52%, #CCCCCC 24.52%) 0 100%, /* Left C */
+		linear-gradient(-36deg, #FF0000 42.34%, transparent 42.34%) 100% 0, /* Right A */
+		linear-gradient(36deg, transparent 57.66%, #FF0000 57.66%) 100% 100%, /* Right B */
+		linear-gradient(72deg, transparent 24.52%, #FF0000 24.52%) 100% 100%, /* Right C */
+		linear-gradient(72deg, #BBBBDD 75.48%, transparent 75.48%) 0 0, /* Upper Left */
+		linear-gradient(-72deg, #BBBBDD 75.48%, transparent 75.48%) 100% 0, /* Upper Right */
+		#CCCCFF linear-gradient(#CCCCCC, #CCCCCC) 50% 100%; /* Top, Bottom */
+}
+#innerReticule {
+	background-color: #EEEEEE;
+	border: 5px solid #00000099;
+	border-radius: 125px;
+	bottom: 0;
+	height: 250px;
+	left: 50%;
+	margin-left: -125px;
+	overflow: hidden;
+	position: absolute;
+	width: 250px;
+	z-index: 1000;
+}
+#innerFill {
+	background-color: #0000FF;
+	height: 250px;
+	position: absolute;
+	top: 100%;
+	width: 250px;
+	z-index: 1100;
+}
+
+
+
+.fullCover {
+    background: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 99999;
+}
+.heavy { background: rgba(255, 255, 255, 0.6) }
+.fullCoverText {
+    background: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+    font-size: 96px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 33%;
+    width: 100%;
+	z-index: 999999;
+}
+.coverTop { top: 20px !important }
+.fullCoverTextSmall {
+    background: rgba(255, 255, 255, 0.3);
+    font-size: 48px;
+    position: absolute;
+    text-align: center;
+    top: 200px;
+    width: 100%;
+	height: 90%;
+	z-index: 999999;
+}
+.fullCoverTextSmall > .actions { height: 30% }
+.fullCoverTextSmall > .inner_instructions { height: 70%; overflow-y: scroll }
+table { width: 100% }
+.firstCell { width: 40% }
+button {
+	border: 1px solid #CCCCCC;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 72px;
+	margin: 20px 0;
+	padding: 24px 48px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.quitGame { font-size: 48px }
+
+.gameInfo {
+	font-size: 48px;
+	font-weight: bold;
+	text-align: center;
+}
+body {
+	background-image: url("img/bg.jpg");
+	background-repeat: repeat-x;
+	font-family: sans-serif;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.hud {
+	background: #FFFFFFBB;
+	display: table;
+	font-size: 96px;
+	line-height: 96px;
+	width: 100%;
+}
+#secondaryMenu {
+	background: rgba(255,255,255,0.5);
+	bottom: 220px;
+	margin: 0 auto;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+#secondaryMenu > div { display: inline-block }
+#secondaryMenu > div > div { cursor: pointer }
+#secondaryMenu > div > span { font-size: 36px; margin-left: -15px; font-weight: bold }
+#bottomMenu {
+	bottom: 0px;
+	margin: 0 auto;
+	margin-bottom: 5px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.circle {
+	background-color: #FFFFFF;
+	border: 5px solid black;
+	border-radius: 100px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 96px;
+	height: 200px;
+	line-height: 200px;
+	text-align: center;
+	width: 200px;
+}
+.flip {
+	-moz-transform: scaleX(-1);
+	-ms-filter: "FlipH";
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	filter: FlipH;
+	transform: scaleX(-1);
+}
+.monsterDiv {
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 40%;
+	margin: 0 auto;
+}
+.cropRow { line-height: 0; text-align: center }
+.item {
+	display: none;
+	position: absolute;
+	margin: 0 auto;
+}
+#food { left: 0; right: 440px; top: 50% }
+#shit { left: 440px; right: 0; top: 50% }
+
+#bathtub {
+	background: url("img/friendsheet.png");
+	height: 384px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 35%;
+	margin: 0 auto;
+	width: 384px;
+	z-index: 400;
+}
+#bathtub.s1 { background-position: -1920px 0 }
+#bathtub.s2 { background-position: -1535px 0 }
+.hideOnLoad  { display: none }
+
+#bathtoy {
+	background: url("img/sheet.png");
+	height: 96px;
+	left: 0;
+	position: absolute;
+	right: 146px;
+	text-align: center;
+	top: 35%;
+	margin: 0 auto;
+	width: 96px;
+	z-index: 300;
+}
+#bathtoy.s1 { margin-top: 195px }
+#bathtoy.s2 { margin-top: 199px }
+#bathtoy.duck { background-position: -1536px -384px }
+#bathtoy.sub { background-position: -1632px -384px }
+#bathtoy.boat { background-position: -1536px -480px }
+#bathtoy.whale { background-position: -1632px -480px }
+
+#ailment {
+	background: url("img/sheet.png");
+	height: 96px;
+	left: 0;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 35%;
+	width: 96px;
+	z-index: 900;
+}
+.sick.s1 { background-position: -1728px -384px !important }
+.sick.s2 { background-position: -1728px -480px !important }
+.hungy.s1 { background-position: -1824px -384px !important }
+.hungy.s2 { background-position: -1824px -480px !important }
+
+#petInfo {
+	background: #EEEEFFDD;
+	border: 1px solid #CCCCCCDD;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 48px;
+	left: 0;
+	margin: 5px auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 95%;
+	z-index: 9999;
+}
+#monsterInfoDisplay {
+	display: inline-block;
+	width: 38%;
+}
+#monsterInfo {
+	display: inline-block;
+	padding-top: 20px;
+	text-align: left;
+	vertical-align: top;
+	width: 58%;
+}
+#petInfoName { font-size: 72px }
+
+#monster { cursor: pointer }
+.btn { cursor: pointer }
+
+#nameSpot {
+	display: table-cell;
+	font-size: 72px;
+	vertical-align: top;
+}
+#nameSpot.right { padding-left: 10px }
+#nameSpot.left { float: right; padding-right: 10px }
+#infoMenu.right { float: right }
+#infoMenu.left { float: left }
+#infoMenu > span { padding: 2px 15px }
+
+.side {
+	background: #000000CC;
+	color: #FFFFFF;
+	display: none;
+	font-size: 72px;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	z-index: 999999;
+}
+.handed.right { right: 0 }
+.handed.left { left: 0 }
+#sideMenu { width: 200px }
+#sideMenu > .btn { padding: 40px }
+.side_close { padding-top: 0 !important }
+.padAround { padding: 10px 40px }
+.heavyBottom { padding-bottom: 40px }
+.menuSection { font-size: 36px; padding: 10px 30px }
+.menuSection button { font-size: 36px; padding: 12px 24px }
+
+.reply {
+	background-color: #FFFFFF;
+	border: 4px solid black;
+    border-radius: 30px;
+	cursor: pointer;
+	font-size: 72px;
+    margin: 10px 20%;
+    padding: 15px;
+    position: relative;
+	text-align: center;
+	z-index: 9999;
+}
+.reply:first-child { margin-top: 60px }
+
+.reply::before {
+    border-color: transparent #000000;
+    border-width: 13px 0 13px 28px;
+    bottom: auto;
+    left: auto;
+    right: -26px;
+    top: 44px;
+    border-style: solid;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+}
+.reply::after {
+    border-color: transparent #FFFFFF;
+    border-width: 9px 0 9px 21px;
+    bottom: auto;
+    left: auto;
+    right: -19px;
+    top: 46px;
+    border-style: solid;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+}
+
+#speechBubble {
+	background-color: #FFFFFF;
+	border: 4px solid black;
+    border-radius: 30px;
+	cursor: pointer;
+	font-size: 72px;
+    margin: 10px 20%;
+    padding: 15px;
+    position: relative;
+	text-align: center;
+}
+#speechBubble::after {
+	border: 4px solid black;
+	border-color: #FFFFFF transparent;
+    border-width: 40px 0 0 40px;
+    bottom: -40px;
+    content: "";
+	cursor: pointer;
+    display: block;
+    left: 110px;
+    position: absolute;
+    width: 0;
+}
+#speechBubble::before {
+	border: 4px solid black;
+	border-color: #000000 transparent;
+    border-width: 48px 0 0 49px;
+    bottom: -50px;
+    content: "";
+	cursor: pointer;
+    display: block;
+    left: 105px;
+    position: absolute;
+    width: 0;
+}
