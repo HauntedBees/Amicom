@@ -83,23 +83,7 @@ function SetUpEventHandlers() {
 	
 	$("#btnStat").on("click", function() {
 		$("#secondaryMenu").empty();
-		var $m = $("#monsterDisplayInfo"), $e = $("#eyesInfo"), $mo = $("#mouthInfo");
-		
-		var p = game.getPetAnimData();
-		if(p.small) { $m.addClass("small"); } else { $m.removeClass("small"); }
-		if(p.bigEyes) { $e.addClass("wide"); } else { $e.removeClass("wide"); }
-		if(p.biggerEyes) { $e.addClass("x-wide"); } else  { $e.removeClass("x-wide"); }
-		if(p.noMouth) {
-			$mo.hide();
-		} else {
-			if(p.bigMouth) { $mo.addClass("wide"); } else  { $mo.removeClass("wide"); }
-			if(p.biggerMouth) { $mo.addClass("x-wide"); } else  { $mo.removeClass("x-wide"); }
-			$mo.removeClass(p.mouths).removeClass(p.sadMouth).addClass(p.mouths.split(" ")[0]).css({left: p.mouthPos[0][0], top: p.mouthPos[0][1]});
-		}
-		
-		$m.removeClass(p.states).addClass(p.states.split(" ")[0]);
-		$e.removeClass(p.eyes).addClass(p.eyes.split(" ")[0]).css({left: p.eyePos[0][0], top: p.eyePos[0][1]});
-		if(game.isPetUpset()) { $("#mouth").removeClass(p.mouths).addClass(p.sadMouth); }
+		$("#monsterInfoBuddy").attr("class", "sprite cave_" + pet.type);
 		
 		$("#petInfoName").text(pet.name);
 		$("#info_age").text(pet.age);
